@@ -1,14 +1,14 @@
 FROM debian:latest
 
 # Install dependencies for wp
-RUN apt-get update && apt-get install -y php php-fpm php-mysql && \
+RUN apt-get update && apt-get install -y php php-fpm php-mysql wget && \
 	apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 COPY www.conf /etc/php/7.4/fpm/pool.d/www.conf
 
 # Getting wordpress
 WORKDIR /var/www/html
-RUN curl -o wordpress.tar.gz -SL https://wordpress.org/latest.tar.gz \
+RUN wget -O wordpress.tar.gz -SL https://wordpress.org/latest.tar.gz \
 	&& tar -xzf wordpress.tar.gz --strip-components=1 \
 	&& rm wordpress.tar.gz \
 	&& chown -R www-data:www-data /var/www/html/

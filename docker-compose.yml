@@ -13,7 +13,7 @@ services:
       - ./certs:/etc/nginx/certs:ro
     restart: always
     environment:
-      - NGINX_ENV_VAR: ${NGINX_ENV_VAR}
+      NGINX_ENV_VAR: "${NGINX_ENV_VAR}"
     networks:
       - my-network
 
@@ -24,10 +24,10 @@ services:
       - wordpress-files:/var/www/html
       - wordpress-db:/var/lib/mysql
     environment:
-      WORDPRESS_DB_HOST: ${WORDPRESS_DB_HOST}
-      WORDPRESS_DB_USER: ${WORDPRESS_DB_USER}
-      WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
-      WORDPRESS_DB_NAME: ${WORDPRESS_DB_NAME}
+      WORDPRESS_DB_HOST: "${WORDPRESS_DB_HOST}"
+      WORDPRESS_DB_USER: "${WORDPRESS_DB_USER}"
+      WORDPRESS_DB_PASSWORD: "${WORDPRESS_DB_PASSWORD}"
+      WORDPRESS_DB_NAME: "${WORDPRESS_DB_NAME}"
     restart: always
     networks:
       - my-network
@@ -38,7 +38,7 @@ services:
     volumes:
       - mariadb-data:/var/lib/mysql
     environment:
-       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+       MYSQL_ROOT_PASSWORD: "${MYSQL_ROOT_PASSWORD}"
     restart: always
     networks:
       - my-network
