@@ -1,14 +1,18 @@
 FROM debian:latest
 
 # Get NGINX
-RUN apk update && apk add --noch-cache NGINX
+RUN apt-get update && apt-get install -y nginx && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+# RUN apk update && apk add --noch-cache NGINX
 
 # get new config
-RUN rm /etc/nginx/conf.d/default.conf
-COPY nginx.conf /etc/nginx/conf.d/
+# RUN rm /etc/nginx/conf.d/default.conf
+RUN rm /etc/nginx/nginx.conf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+COPY nginx.conf /etc/nginx/nginx.conf/
+COPY default.conf /etc/nginx/sites-available/default
 
 # Expose port
-EXPOSE 
+EXPOSE 80
+EXPOSE 443
 
 # Start NGINX Server
 CMD ["nginx", "-g", "daemon off;"]
