@@ -1,0 +1,23 @@
+nginx -t
+# Verifys Docker Config
+
+docker build -t nginx_test .
+# Builds the container of the current directory and names it nginx_test
+
+docker run -dp 443:443 --name nginx nginx_test
+# Runs the container
+
+docker exec -t nginx bash
+# Opens a command line
+
+docker ps
+# Shows Docker processes
+
+
+docker rm -f nginx
+docker rmi nginx_test
+# Deletes nginx_test
+
+docker images
+# Shows images
+
