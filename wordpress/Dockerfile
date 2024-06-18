@@ -1,7 +1,7 @@
 FROM debian:latest
 
 # Install dependencies for wp
-RUN apt-get update && apt-get install -y php php-fpm php-mysql wget && \
+RUN apt-get update && apt-get install -y php php7.4-fpm php-mysql wget && \
 	apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 COPY www.conf /etc/php/7.4/fpm/pool.d/www.conf

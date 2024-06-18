@@ -10,7 +10,7 @@ services:
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./nginx/default.conf:/etc/nginx/sites-available/default:ro
-      - ./certs:/etc/nginx/certs:ro
+      - ./nginx/certs:/etc/nginx/certs:ro
     restart: always
     environment:
       NGINX_ENV_VAR: "${NGINX_ENV_VAR}"
