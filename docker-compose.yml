@@ -2,7 +2,8 @@ version: '3'
 
 services:
   nginx:
-    build: ./nginx
+    build:
+      context: ./nginx
     ports:
       - "80:80"
       - "443:443"
@@ -11,36 +12,33 @@ services:
       - ./nginx/default.conf:/etc/nginx/sites-available/default:ro
       - ./certs:/etc/nginx/certs:ro
     restart: always
-    depends_on:
-      - wordpress
+    environment:
+      - NGINX_ENV_VAR: ${NGINX_ENV_VAR}
     networks:
       - my-network
 
   wordpress:
-    build: ./wordpress
+    build:
+      context: ./wordpress
     volumes:
       - wordpress-files:/var/www/html
       - wordpress-db:/var/lib/mysql
     environment:
-      WORDPRESS_DB_HOST: db
-      WORDPRESS_DB_USER: example_user
-      WORDPRESS_DB_PASSWORD: example_password
-      WORDPRESS_DB_NAME: example_db
+      WORDPRESS_DB_HOST: ${WORDPRESS_DB_HOST}
+      WORDPRESS_DB_USER: ${WORDPRESS_DB_USER}
+      WORDPRESS_DB_PASSWORD: ${WORDPRESS_DB_PASSWORD}
+      WORDPRESS_DB_NAME: ${WORDPRESS_DB_NAME}
     restart: always
-    depends_on:
-      - db
     networks:
       - my-network
 
   db:
-    build: ./mariadb
-    environment:
-      MYSQL_ROOT_PASSWORD: example_root_password
-      MYSQL_DATABASE: example_db
-      MYSQL_USER: example_user
-      MYSQL_PASSWORD: example_password
+    build:
+      context: ./mariadb
     volumes:
-      - wordpress-db:/var/lib/mysql
+      - mariadb-data:/var/lib/mysql
+    environment:
+       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
     restart: always
     networks:
       - my-network
@@ -52,4 +50,5 @@ networks:
 volumes:
   wordpress-db:
   wordpress-files:
+  mariadb-data:
   certs:
