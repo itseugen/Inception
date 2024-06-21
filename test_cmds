@@ -21,3 +21,8 @@ docker rmi nginx_test
 docker images
 # Shows images
 
+
+
+# TEST NGINX SOLO:
+docker build -t nginx .
+docker run -dp 8000:442 --name nginx nginx

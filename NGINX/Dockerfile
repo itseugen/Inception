@@ -1,4 +1,4 @@
-FROM debian:latest
+FROM debian:12
 
 # Get NGINX
 RUN apt-get update && apt-get install -y nginx && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*

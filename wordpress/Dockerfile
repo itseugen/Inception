@@ -1,4 +1,4 @@
-FROM debian:latest
+FROM debian:12
 
 # Install dependencies for wp
 RUN apt-get update && apt-get install -y php php7.4-fpm php-mysql wget && \
