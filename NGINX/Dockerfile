@@ -13,16 +13,16 @@ RUN apt-get update && apt-get install -y nginx && apt-get clean && rm -rf /var/l
 # COPY default.conf /etc/nginx/http.d
 
 
-COPY nginx.conf /etc/nginx/nginx.conf
+COPY ./nginx.conf /etc/nginx/
 COPY certs /etc/nginx/certs
 
 # Expose port
 # EXPOSE 80
-# EXPOSE 443
+EXPOSE 443
 
 # Test!!!
 COPY index.html /usr/share/nginx/html/index.html
 
 # Start NGINX Server
-# CMD ["nginx", "-g", "daemon off;"]
+CMD ["nginx", "-g", "daemon off;"]
 # CMD ["sleep", "1000"]
