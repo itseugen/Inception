@@ -23,4 +23,5 @@ COPY wp-conf.php /var/www/html/wordpress/
 
 # Start FPM server
 # CMD [ "php-fpm", "-F"]
+
 CMD ["php-fpm8.2", "-F"]
