@@ -26,3 +26,14 @@ docker images
 # TEST NGINX SOLO:
 docker build -t nginx .
 docker run -dp 8000:442 --name nginx nginx
+
+
+# Stop all contaners:
+docker stop $(docker ps -aq)
+
+# Remove all containers:
+docker rm $(docker ps -aq)
+
+# Delete all images:
+docker rmi $(docker images -q)
+
