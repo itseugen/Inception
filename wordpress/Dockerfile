@@ -9,7 +9,7 @@ RUN apt-get update \
 	&& apt-get clean \
 	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-# COPY www.conf /etc/php/7.4/fpm/pool.d/www.conf
+COPY www.conf /etc/php/7.4/fpm/pool.d/
 
 WORKDIR /var/www/html
 RUN wget -O wordpress.tar.gz -SL https://wordpress.org/latest.tar.gz \
