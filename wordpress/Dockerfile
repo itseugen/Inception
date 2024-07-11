@@ -12,7 +12,7 @@ RUN wget -O wordpress.tar.gz -SL https://wordpress.org/latest.tar.gz \
 	&& rm wordpress.tar.gz \
 	&& chown -R www-data:www-data /var/www/html/
 
-RUN chown -R www-data:www-data /var/log/php8.2
+RUN chown -R www-data:www-data /usr/sbin/php-fpm8.2
 
 COPY init.sh /etc/
 RUN chmod +x /etc/init.sh
@@ -23,9 +23,9 @@ RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.ph
 RUN chmod +x wp-cli.phar
 RUN mv wp-cli.phar /usr/local/bin/wp
 
-RUN sed -i "s/listen = 127.0.0.1:9000/listen = 0.0.0.0:9000/" /etc/php82/php-fpm.d/www.conf
+RUN sed -i "s/listen = 127.0.0.1:9000/listen = 0.0.0.0:9000/" /etc/php/8.2/fpm/pool.d/www.conf
 
-USER www-data
+# USER www-data
 
 EXPOSE 9000
 
