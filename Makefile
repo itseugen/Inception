@@ -18,3 +18,6 @@ down:
 
 restart:
 	docker-compose restart
+
+re:
+	make down && make build && make up && docker ps
