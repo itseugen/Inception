@@ -21,4 +21,4 @@ wp user create $WP_USER_NAME \
 wp option update home $SITE_URL
 wp option update siteurl $SITE_URL
 
-php-fpm82 -F
+php-fpm8.2 -F

@@ -55,4 +55,5 @@ if [ ! -d "/var/lib/mysql/${DB_NAME}" ]; then
 	run_bootstrap
 fi
 
-exec /usr/bin/mariadbd --datadir=/var/lib/mysql --user=mysql
+exec mysqld
+# exec /usr/bin/mariadbd --datadir=/var/lib/mysql --user=mysql
