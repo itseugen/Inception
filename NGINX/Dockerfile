@@ -9,7 +9,7 @@ COPY certs /etc/nginx/certs
 EXPOSE 443
 
 # Test!!!
-COPY index.html /usr/share/nginx/html/index.html
+# COPY index.html /usr/share/nginx/html/index.html
 
 # Start NGINX Server
 CMD ["nginx", "-g", "daemon off;"]
