@@ -4,11 +4,10 @@ services:
   nginx:
     build:
       context: ./nginx
+    image: nginx
     container_name: nginx
     ports:
       - "443:443"
-    # volumes:
-    #   - wordpress_data:/usr/share/nginx/html
     volumes:
       - wordpress_data:/var/www/html
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
@@ -23,21 +22,9 @@ services:
     build:
       context: ./wordpress
     container_name: wordpress
-    environment:
-      - WP_URL=${WP_URL}
-      - DB_NAME=${DB_NAME}
-      - DB_USER=${DB_USER}
-      - DB_PWD=${DB_PWD}
-      - WP_TITLE=${WP_TITLE}
-      - WP_ADMIN_NAME=${WP_ADMIN_NAME}
-      - WP_ADMIN_PASS=${WP_ADMIN_PASS}
-      - WP_ADMIN_EMAIL=${WP_ADMIN_EMAIL}
-      - WP_USER_NAME=${WP_USER_NAME}
-      - WP_USER_EMAIL=${WP_USER_EMAIL}
-      - WP_USER_PASS=${WP_USER_PASS}
-      - SITE_URL=${SITE_URL}
-    # volumes:
-    #   - wordpress_data:/var/www/html/wordpress
+    image: wordpress
+    env_file:
+      - .env
     volumes:
       - wordpress_data:/var/www/html
     restart: always
@@ -50,15 +37,13 @@ services:
     build:
       context: ./mariadb
     container_name: mariadb
+    image: mariadb
     ports:
       - 3306:3306
+    env_file:
+      - .env
     volumes:
       - mariadb_data:/var/lib/mysql
-    environment:
-       MYSQL_ROOT_PASSWORD: password
-       MYSQL_DATABASE: wordpress
-       MYSQL_USER: wordpressuser
-       MYSQL_PASSWORD: password
     restart: always
     networks:
       - backend
@@ -70,7 +55,3 @@ networks:
 volumes:
   mariadb_data:
   wordpress_data:
-  # wordpress-db:
-  # wordpress-files:
-  # mariadb-data:
-  # certs:

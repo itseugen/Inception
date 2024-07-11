@@ -20,8 +20,8 @@ RUN wget -O wordpress.tar.gz -SL https://wordpress.org/latest.tar.gz \
 
 # COPY wp-config.php /var/www/html/
 
-COPY setup.sh /etc/
-RUN chmod +x /etc/setup.sh
+COPY init.sh /etc/
+RUN chmod +x /etc/init.sh
 
 
 RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
@@ -38,5 +38,5 @@ RUN mv wp-cli.phar /usr/local/bin/wp
 
 # USER www-data
 
-CMD ["/etc/setup.sh"]
+CMD ["/etc/init.sh"]
 # CMD ["ls"]
