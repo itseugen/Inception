@@ -23,6 +23,7 @@ re:
 	make down && make build && make up && docker ps
 
 fclean: down
-	docker rmi nginx wordpress mariadb &&\
-	- docker volume rm $(docker volume ls) &&\
+	docker rmi nginx wordpress mariadb
+	docker volume rm github_mariadb_data
+	docker volume rm github_wordpress_data
 	yes | docker system prune
