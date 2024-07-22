@@ -5,7 +5,7 @@ wp config create --force \
 					--url=$WP_URL \
 					--dbname=$DB_NAME \
 					--dbuser=$DB_USER \
-					--dbpass=$DB_PWD \
+					--dbpass=$DB_PASSWORD \
 					--dbhost=mariadb:3306 \
 					--allow-root
 

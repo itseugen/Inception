@@ -12,7 +12,6 @@ WORKDIR /var/www/html
 # 	&& rm wordpress.tar.gz \
 # 	&& chown -R www-data:www-data /var/www/html/
 
-RUN chown -R www-data:www-data /usr/sbin/php-fpm8.2
 
 COPY init.sh /etc/
 RUN chmod +x /etc/init.sh
@@ -23,9 +22,18 @@ RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.ph
 RUN chmod +x wp-cli.phar
 RUN mv wp-cli.phar /usr/local/bin/wp
 
-RUN sed -i "s/listen = 127.0.0.1:9000/listen = 0.0.0.0:9000/" /etc/php/8.2/fpm/pool.d/www.conf
+COPY www.conf /etc/php/7.4/fpm/pool.d/
 
+# RUN sed -i "s/listen = 127.0.0.1:9000/listen = 0.0.0.0:9000/" /etc/php/8.2/fpm/pool.d/www.conf
+
+RUN chown -R www-data:www-data /usr/sbin/php-fpm8.2
 RUN chown www-data:www-data /var/log/
+
+RUN mkdir -p /var/www/html /run/php
+
+RUN chown -R www-data:www-data /var/www/html
+RUN chown -R www-data:www-data /run/php
+
 USER www-data
 
 EXPOSE 9000
