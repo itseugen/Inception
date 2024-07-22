@@ -21,3 +21,8 @@ restart:
 
 re:
 	make down && make build && make up && docker ps
+
+fclean: down
+	docker rmi nginx wordpress mariadb &&\
+	- docker volume rm $(docker volume ls) &&\
+	yes | docker system prune

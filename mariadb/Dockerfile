@@ -8,8 +8,6 @@ RUN mkdir -p /var/lib/mysql /var/run/mysqld && \
 
 COPY mdb.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
 
-RUN mariadb-install-db
-
 COPY init.sh /etc/
 
 RUN chmod +x /etc/init.sh

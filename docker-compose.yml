@@ -48,10 +48,22 @@ services:
     networks:
       - backend
 
+volumes:
+  mariadb_data:
+    driver_opts:
+      type: bind
+      device: /Users/eweiberl/data/database
+      o: bind
+  wordpress_data:
+    driver_opts:
+      type: bind
+      device: /Users/eweiberl/data/wordpress
+      o: bind
+
 networks:
   backend:
     driver: bridge
 
-volumes:
-  mariadb_data:
-  wordpress_data:
+# volumes:
+#   mariadb_data:
+#   wordpress_data:
