@@ -12,6 +12,9 @@ COPY init.sh /etc/
 
 RUN chmod +x /etc/init.sh
 
+# COPY mdb_init.sql /etc/mysql/
+
+# RUN chown mysql:mysql /etc
 # TEMP!!!!!!!!!!!!!!!
 EXPOSE 3306
 

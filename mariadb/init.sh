@@ -33,3 +33,31 @@ echo "FLUSH PRIVILEGES;
 mariadb-install-db
 
 exec mariadbd --user=mysql
+
+# Initialize database if it doesn't exist
+# if [ ! -d "/var/lib/mysql/${DB_NAME}" ]; then
+#   echo "FLUSH PRIVILEGES;
+#   CREATE DATABASE IF NOT EXISTS \`${DB_NAME}\`;
+#   CREATE USER IF NOT EXISTS '${DB_USER}'@'%' IDENTIFIED BY '${DB_PASSWORD}';
+#   GRANT ALL PRIVILEGES on \`${DB_NAME}\`.* TO '${DB_USER}'@'%';
+#   FLUSH PRIVILEGES;" > /etc/mysql/mdb_init.sql
+
+#   mariadb-install-db
+#   exec mariadbd --user=mysql --init-file=/etc/mysql/mdb_init.sql
+# else
+#   exec mariadbd --user=mysql
+# fi
+
+# # Initialize database if it doesn't exist
+# if [ ! -d "/var/lib/mysql/${DB_NAME}" ]; then
+#   echo "FLUSH PRIVILEGES;
+#   CREATE DATABASE IF NOT EXISTS \`${DB_NAME}\`;
+#   CREATE USER IF NOT EXISTS '${DB_USER}'@'%' IDENTIFIED BY '${DB_PASSWORD}';
+#   GRANT ALL PRIVILEGES on \`${DB_NAME}\`.* TO '${DB_USER}'@'%';
+#   FLUSH PRIVILEGES;" > /var/lib/mysql/mdb_init.sql
+
+#   mariadb-install-db
+#   exec mariadbd --user=mysql --init-file=/var/lib/mysql/mdb_init.sql
+# else
+#   exec mariadbd --user=mysql
+# fi
