@@ -20,14 +20,11 @@ COPY www.conf /etc/php/8.2/fpm/pool.d/www.conf
 COPY init.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/init.sh
 
-RUN chown -R www-data:www-data /var/www/html
-RUN chown -R www-data:www-data /var/log/
+RUN chown -R www-data:www-data /var/www/
+RUN chown www-data:www-data /var/log/
 RUN chown -R www-data:www-data /run/php
 
-RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
-RUN chmod +x wp-cli.phar
-RUN mv wp-cli.phar /usr/local/bin/wp
-
+USER www-data
 
 EXPOSE 9000
 
