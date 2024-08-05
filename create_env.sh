@@ -20,6 +20,13 @@ read -p "Enter the WordPress Admin Email: " WP_ADMIN_EMAIL
 read -p "Enter the WordPress User Name: " WP_USER_NAME
 read -p "Enter the WordPress User Email: " WP_USER_EMAIL
 read -p "Enter the WordPress User Password: " WP_USER_PASS
+read -p "Enter the Country Name (2 Letter Code): " COUNTRY_NAME
+read -p "Enter the State or Province Name: " STATE_NAME
+read -p "Enter the Locality Name (city): " CITY_NAME
+read -p "Enter the Organization Name (company): " COMPANY_NAME
+read -p "Enter the Organization's Unit Name: " UNIT_NAME
+read -p "Enter the Common Name: " COMMON_NAME
+read -p "Enter the Email Address for open SSL: " SSL_MAIL
 
 cat <<EOL >> $ENV_FILE
 WP_URL=$WP_URL
@@ -33,6 +40,13 @@ WP_ADMIN_EMAIL=$WP_ADMIN_EMAIL
 WP_USER_NAME=$WP_USER_NAME
 WP_USER_EMAIL=$WP_USER_EMAIL
 WP_USER_PASS=$WP_USER_PASS
+COUNTRY_NAME=$COUNTRY_NAME
+STATE_NAME=$STATE_NAME
+CITY_NAME=$CITY_NAME
+COMPANY_NAME=$COMPANY_NAME
+UNIT_NAME=$UNIT_NAME
+COMMON_NAME=$COMMON_NAME
+SSL_MAIL=$SSL_MAIL
 EOL
 
 echo ".env file created successfully."
