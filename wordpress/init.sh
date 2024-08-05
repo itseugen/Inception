@@ -23,8 +23,8 @@
     --user_pass="${WP_USER_PASS}" \
     --allow-root
 
-  wp option update home "${SITE_URL}" --allow-root
-  wp option update siteurl "${SITE_URL}" --allow-root
+  wp option update home "${WP_URL}" --allow-root
+  wp option update siteurl "${WP_URL}" --allow-root
 # fi
 
 exec php-fpm8.2 -F
