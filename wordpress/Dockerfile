@@ -9,6 +9,11 @@ RUN apt-get update \
 
 RUN mkdir -p /var/www/html /run/php
 
+RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && \
+		chmod +x wp-cli.phar && \
+		mv wp-cli.phar /usr/local/bin/wp && \
+		wp core download --path=/var/www/html --version=6.5.2 --allow-root
+
 RUN chown -R www-data:www-data /var/www/html
 RUN chown -R www-data:www-data /var/log/
 RUN chown -R www-data:www-data /run/php
