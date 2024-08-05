@@ -14,6 +14,12 @@ RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.ph
 		mv wp-cli.phar /usr/local/bin/wp && \
 		wp core download --path=/var/www/html --version=6.5.2 --allow-root
 
+
+COPY www.conf /etc/php/8.2/fpm/pool.d/www.conf
+
+COPY init.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/init.sh
+
 RUN chown -R www-data:www-data /var/www/html
 RUN chown -R www-data:www-data /var/log/
 RUN chown -R www-data:www-data /run/php
@@ -22,10 +28,6 @@ RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.ph
 RUN chmod +x wp-cli.phar
 RUN mv wp-cli.phar /usr/local/bin/wp
 
-COPY www.conf /etc/php/7.4/fpm/pool.d/
-
-COPY init.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/init.sh
 
 EXPOSE 9000
 
