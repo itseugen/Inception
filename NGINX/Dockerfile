@@ -4,8 +4,6 @@ RUN apt-get update && apt-get install -y nginx && apt-get install openssl && apt
 		&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 COPY ./nginx.conf /etc/nginx/
-# COPY certs/server.crt /etc/ssl/certs/
-# COPY certs/server.key /etc/ssl/private/
 
 RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
     -keyout /etc/ssl/private/server.key \
@@ -16,5 +14,4 @@ COPY index.html /usr/share/nginx/html/index.html
 
 EXPOSE 443
 
-# Start NGINX Server
 CMD ["nginx", "-g", "daemon off;"]
