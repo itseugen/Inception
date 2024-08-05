@@ -1,18 +1,7 @@
 #!/bin/sh
-cd /var/www/html
+# cd /var/www/html
 
-# if pgrep php-fpm8.2; then
-#   echo "Stopping existing PHP-FPM instances..."
-#   pkill php-fpm8.2
-# fi
-
-# if [ -e /run/php/php8.2-fpm.sock ]; then
-#   echo "Removing existing PHP-FPM socket file..."
-#   rm /run/php/php8.2-fpm.sock
-# fi
-
-# if [ ! -f /var/www/html/wp-config.php ]; then
-  wp core download --allow-root
+#   wp core download --allow-root
 
   wp config create --force \
     --url="${WP_URL}" \
