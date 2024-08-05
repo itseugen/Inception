@@ -1,5 +1,7 @@
 FROM debian:12
 
+WORKDIR /var/www/html
+
 RUN apt-get update \
 	&& apt install -y php php8.2-fpm php-mysql wget \
 	&& apt-get clean \
