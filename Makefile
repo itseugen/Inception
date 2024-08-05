@@ -1,4 +1,5 @@
-all: help
+all:
+	docker compose up --build -d
 
 help:
 	@echo "Usage:"
