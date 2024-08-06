@@ -27,6 +27,8 @@ read -p "Enter the Organization Name (company): " COMPANY_NAME
 read -p "Enter the Organization's Unit Name: " UNIT_NAME
 read -p "Enter the Common Name: " COMMON_NAME
 read -p "Enter the Email Address for open SSL: " SSL_MAIL
+read -p "Enter the Path to the MariaDB device: " MARIADB_DEVICE
+read -p "Enter the Path to the Wordpress device: " WORDPRESS_DEVICE
 
 cat <<EOL >> $ENV_FILE
 WP_URL=$WP_URL
@@ -47,6 +49,8 @@ COMPANY_NAME=$COMPANY_NAME
 UNIT_NAME=$UNIT_NAME
 COMMON_NAME=$COMMON_NAME
 SSL_MAIL=$SSL_MAIL
+MARIADB_DEVICE=$MARIADB_DEVICE
+WORDPRESS_DEVICE=$WORDPRESS_DEVICE
 EOL
 
 echo ".env file created successfully."
