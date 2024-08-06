@@ -31,8 +31,8 @@ re: fclean all
 
 fclean: down
 	docker rmi nginx wordpress mariadb
-	docker volume rm github_mariadb_data
-	docker volume rm github_wordpress_data
+	docker volume rm github_mariadb_data || true
+	docker volume rm github_wordpress_data || true
 	yes | docker system prune
 
 $(ENV_FILE):
