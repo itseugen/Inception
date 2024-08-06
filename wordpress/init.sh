@@ -1,8 +1,4 @@
 #!/bin/sh
-# cd /var/www/html
-
-#   wp core download --allow-root
-
   wp config create --force \
     --url="${WP_URL}" \
     --dbname="${DB_NAME}" \
@@ -25,6 +21,5 @@
 
   wp option update home "${WP_URL}" --allow-root
   wp option update siteurl "${WP_URL}" --allow-root
-# fi
 
 exec php-fpm8.2 -F
